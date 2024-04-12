@@ -66,5 +66,20 @@ class Usercourse extends BaseModel
         $structure['filter'] = ['course_id', 'user_id'];
         return $structure;
     }
+    
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+        $rights = parent::rights();
 
+        $rights['staff'] = ['view' => true];
+        $rights['registered'] = ['view' => true];
+        $rights['guest'] = [];
+
+        return $rights;
+    }
 }

@@ -73,5 +73,20 @@ class Course extends BaseModel
         
         return $structure;
     }
+    
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+        $rights = parent::rights();
 
+        $rights['staff'] = ['view' => true];
+        $rights['registered'] = ['view' => true];
+        $rights['guest'] = [];
+
+        return $rights;
+    }
 }
